@@ -2,39 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Kronos Classification System - Industrial Database Design */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Kronos Dark Industrial Palette */
+    --background: 210 11% 8%;
+    --foreground: 210 15% 92%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 210 11% 12%;
+    --card-foreground: 210 15% 92%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 210 11% 12%;
+    --popover-foreground: 210 15% 92%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 75% 55%;
+    --primary-foreground: 210 15% 92%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 8% 18%;
+    --secondary-foreground: 210 15% 85%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 8% 14%;
+    --muted-foreground: 210 10% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 8% 18%;
+    --accent-foreground: 210 15% 85%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 210 15% 92%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 210 8% 20%;
+    --input: 210 8% 16%;
+    --ring: 0 75% 55%;
+
+    /* Kronos Classification Colors */
+    --threat-critical: 0 75% 55%;
+    --threat-high: 15 85% 60%;
+    --threat-medium: 45 90% 55%;
+    --threat-low: 120 60% 50%;
+    --status-eliminated: 0 75% 45%;
+    --status-neutralized: 120 40% 45%;
+    --classification-top-secret: 0 75% 55%;
+    --classification-secret: 15 85% 60%;
+    
+    /* Technical Gradients */
+    --gradient-threat: linear-gradient(135deg, hsl(0 75% 55%) 0%, hsl(0 65% 45%) 100%);
+    --gradient-data: linear-gradient(180deg, hsl(210 8% 18%) 0%, hsl(210 8% 14%) 100%);
+    --gradient-scanner: linear-gradient(90deg, transparent 0%, hsl(0 75% 55% / 0.2) 50%, transparent 100%);
+    
+    /* Shadows */
+    --shadow-threat: 0 4px 20px hsl(0 75% 55% / 0.3);
+    --shadow-data: 0 2px 10px hsl(210 11% 5% / 0.5);
+    --shadow-glow: 0 0 30px hsl(0 75% 55% / 0.2);
+    
+    /* Animations */
+    --transition-data: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --scan-duration: 2s;
 
     --radius: 0.5rem;
 

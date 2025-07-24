@@ -52,6 +52,20 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				threat: {
+					critical: 'hsl(var(--threat-critical))',
+					high: 'hsl(var(--threat-high))',
+					medium: 'hsl(var(--threat-medium))',
+					low: 'hsl(var(--threat-low))'
+				},
+				status: {
+					eliminated: 'hsl(var(--status-eliminated))',
+					neutralized: 'hsl(var(--status-neutralized))'
+				},
+				classification: {
+					'top-secret': 'hsl(var(--classification-top-secret))',
+					secret: 'hsl(var(--classification-secret))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -84,11 +98,30 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'scanner-sweep': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(100%)' }
+				},
+				'data-pulse': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.7' }
+				},
+				'threat-glow': {
+					'0%, 100%': { boxShadow: '0 0 20px hsl(var(--threat-critical) / 0.3)' },
+					'50%': { boxShadow: '0 0 30px hsl(var(--threat-critical) / 0.6)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'scanner-sweep': 'scanner-sweep var(--scan-duration) ease-in-out infinite',
+				'data-pulse': 'data-pulse 2s ease-in-out infinite',
+				'threat-glow': 'threat-glow 2s ease-in-out infinite'
+			},
+			fontFamily: {
+				'mono': ['Monaco', 'Consolas', 'Courier New', 'monospace'],
+				'data': ['SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'monospace']
 			}
 		}
 	},
