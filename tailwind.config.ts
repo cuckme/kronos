@@ -117,11 +117,80 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'scanner-sweep': 'scanner-sweep var(--scan-duration) ease-in-out infinite',
 				'data-pulse': 'data-pulse 2s ease-in-out infinite',
-				'threat-glow': 'threat-glow 2s ease-in-out infinite'
+				'threat-glow': 'threat-glow 2s ease-in-out infinite',
+				'glitch': 'glitch 0.5s infinite',
+				'glitch-1': 'glitch-1 0.5s infinite', 
+				'glitch-2': 'glitch-2 0.5s infinite',
+				'access-denied-flash': 'access-denied-flash 1s infinite',
+				'scanline-flicker': 'scanline-flicker 0.1s infinite'
+			},
+			keyframes: {
+				'accordion-down': {
+					from: {
+						height: '0'
+					},
+					to: {
+						height: 'var(--radix-accordion-content-height)'
+					}
+				},
+				'accordion-up': {
+					from: {
+						height: 'var(--radix-accordion-content-height)'
+					},
+					to: {
+						height: '0'
+					}
+				},
+				'scanner-sweep': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(100%)' }
+				},
+				'data-pulse': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.7' }
+				},
+				'threat-glow': {
+					'0%, 100%': { boxShadow: '0 0 20px hsl(var(--threat-critical) / 0.3)' },
+					'50%': { boxShadow: '0 0 30px hsl(var(--threat-critical) / 0.6)' }
+				},
+				'glitch': {
+					'0%, 100%': { transform: 'translateX(0)' },
+					'10%': { transform: 'translateX(-2px) skewX(-2deg)' },
+					'20%': { transform: 'translateX(2px) skewX(2deg)' },
+					'30%': { transform: 'translateX(-1px) skewX(-1deg)' },
+					'40%': { transform: 'translateX(1px) skewX(1deg)' },
+					'50%': { transform: 'translateX(0)' }
+				},
+				'glitch-1': {
+					'0%, 100%': { transform: 'translateX(0) skewX(0deg)', opacity: '1' },
+					'10%': { transform: 'translateX(-2px) skewX(-5deg)', opacity: '0.8' },
+					'20%': { transform: 'translateX(2px) skewX(5deg)', opacity: '0.8' },
+					'30%': { transform: 'translateX(-1px) skewX(-2deg)', opacity: '0.9' },
+					'40%': { transform: 'translateX(1px) skewX(2deg)', opacity: '0.9' },
+					'50%': { transform: 'translateX(0) skewX(0deg)', opacity: '1' }
+				},
+				'glitch-2': {
+					'0%, 100%': { transform: 'translateX(0) skewX(0deg)', opacity: '1' },
+					'15%': { transform: 'translateX(1px) skewX(2deg)', opacity: '0.7' },
+					'25%': { transform: 'translateX(-1px) skewX(-2deg)', opacity: '0.7' },
+					'35%': { transform: 'translateX(2px) skewX(3deg)', opacity: '0.8' },
+					'45%': { transform: 'translateX(-2px) skewX(-3deg)', opacity: '0.8' },
+					'55%': { transform: 'translateX(0) skewX(0deg)', opacity: '1' }
+				},
+				'access-denied-flash': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.3' }
+				},
+				'scanline-flicker': {
+					'0%, 100%': { opacity: 'var(--scanline-opacity)' },
+					'50%': { opacity: 'calc(var(--scanline-opacity) * 0.5)' }
+				}
 			},
 			fontFamily: {
 				'mono': ['Monaco', 'Consolas', 'Courier New', 'monospace'],
-				'data': ['SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'monospace']
+				'data': ['SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'monospace'],
+				'terminal': ['VT323', 'Monaco', 'Consolas', 'monospace'],
+				'system': ['Orbitron', 'Inter', 'system-ui', 'sans-serif']
 			}
 		}
 	},

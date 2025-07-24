@@ -55,9 +55,14 @@
     --shadow-data: 0 2px 10px hsl(210 11% 5% / 0.5);
     --shadow-glow: 0 0 30px hsl(0 75% 55% / 0.2);
     
-    /* Animations */
-    --transition-data: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --scan-duration: 2s;
+    /* Glitch Effects */
+    --glitch-color-1: hsl(0 100% 50%);
+    --glitch-color-2: hsl(180 100% 50%);
+    --glitch-shift: 2px;
+    
+    /* Terminal Effects */
+    --scanline-opacity: 0.1;
+    --flicker-opacity: 0.95;
 
     --radius: 0.5rem;
 
@@ -124,5 +129,59 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .glitch-text {
+    @apply relative inline-block;
+    animation: glitch 2s infinite;
+  }
+  
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    @apply absolute top-0 left-0 w-full h-full;
+  }
+  
+  .glitch-text::before {
+    animation: glitch-1 0.5s infinite;
+    color: var(--glitch-color-1);
+    z-index: -1;
+  }
+  
+  .glitch-text::after {
+    animation: glitch-2 0.5s infinite;
+    color: var(--glitch-color-2);
+    z-index: -2;
+  }
+  
+  .scanlines {
+    position: relative;
+  }
+  
+  .scanlines::after {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 0, 0, var(--scanline-opacity)) 2px,
+      rgba(255, 0, 0, var(--scanline-opacity)) 4px
+    );
+    animation: scanline-flicker 0.1s infinite;
+  }
+}
+
+@layer utilities {
+  .terminal-input {
+    @apply bg-background border-primary/30 text-primary font-terminal tracking-wider;
+    filter: drop-shadow(0 0 10px hsl(var(--primary) / 0.3));
+  }
+  
+  .access-denied {
+    @apply text-primary font-terminal text-xl tracking-widest;
+    animation: glitch 0.3s infinite, access-denied-flash 1s infinite;
   }
 }
