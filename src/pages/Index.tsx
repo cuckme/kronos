@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { KronosHeader } from "@/components/KronosHeader";
 import { SuperCard } from "@/components/SuperCard";
-import { eliminatedSupers } from "@/data/superData";
+import { SuperImageGenerator } from "@/components/SuperImageGenerator";
+import { eliminatedSupers, SuperData } from "@/data/superData";
 
 const Index = () => {
+  const [supers, setSupers] = useState<SuperData[]>(eliminatedSupers);
+
+  const handleImagesGenerated = (updatedSupers: SuperData[]) => {
+    setSupers(updatedSupers);
+  };
   return (
     <div className="min-h-screen bg-background">
       <KronosHeader />
@@ -18,15 +25,20 @@ const Index = () => {
                 Chronological elimination log - Omnidroid adaptive learning protocol
               </p>
             </div>
-            <div className="text-right font-data text-xs text-muted-foreground">
-              <div>TOTAL SUBJECTS: {eliminatedSupers.length}</div>
-              <div>SUCCESS RATE: 100%</div>
+              <div className="text-right font-data text-xs text-muted-foreground">
+                <div>TOTAL SUBJECTS: {supers.length}</div>
+                <div>SUCCESS RATE: 100%</div>
+              </div>
             </div>
-          </div>
+            
+            <SuperImageGenerator 
+              supers={supers}
+              onImagesGenerated={handleImagesGenerated}
+            />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {eliminatedSupers.map((superData, index) => (
+          {supers.map((superData, index) => (
             <SuperCard key={superData.codename} data={superData} />
           ))}
         </div>
