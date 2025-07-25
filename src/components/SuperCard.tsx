@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ThreatLevelBadge } from "./ThreatLevelBadge";
 import { StatusBadge } from "./StatusBadge";
 import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 interface SuperData {
   codename: string;
@@ -11,6 +12,7 @@ interface SuperData {
   finalStatus: string;
   combatAnalysis: string;
   omnidroidUpgrades: string;
+  profileImage: string;
 }
 
 interface SuperCardProps {
@@ -24,7 +26,17 @@ export function SuperCard({ data }: SuperCardProps) {
       <div className="absolute inset-0 bg-gradient-scanner opacity-0 group-hover:opacity-100 animate-scanner-sweep pointer-events-none" />
       
       <CardHeader className="pb-4">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex items-start gap-4">
+          <Avatar className="w-20 h-20 border-2 border-border grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer">
+            <AvatarImage 
+              src={data.profileImage} 
+              alt={`${data.codename} - Super Image`}
+              className="object-cover"
+            />
+            <AvatarFallback className="bg-muted font-data text-sm">
+              {data.codename.slice(0, 2).toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
           <div className="flex-1">
             <h3 className="font-data text-lg font-bold text-foreground tracking-wide">
               {data.codename}
